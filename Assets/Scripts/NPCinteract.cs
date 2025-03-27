@@ -12,7 +12,7 @@ public class NPCinteract : MonoBehaviour
     private int index;
 
     public float textSpeed;
-    public bool playerIsClose;
+    private bool playerIsClose;
 
     void Update()
     {
