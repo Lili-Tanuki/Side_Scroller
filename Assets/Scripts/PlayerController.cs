@@ -3,7 +3,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController: MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     public InputActionAsset inputAsset;
@@ -84,6 +84,7 @@ public class PlayerController: MonoBehaviour
         {
             _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+
     }
 
 }

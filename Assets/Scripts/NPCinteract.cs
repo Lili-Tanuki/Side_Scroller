@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class NPCinteract : MonoBehaviour
 {
@@ -14,6 +15,16 @@ public class NPCinteract : MonoBehaviour
     public float textSpeed;
     private bool playerIsClose;
 
+    public Sprite AizenLeGoat;
+    public SpriteRenderer Receptionniste;
+    public GameObject NPCRecep;
+    public AudioSource Yokoso;
+    public float scale = 2.0f;
+
+    private void Start()
+    {
+            Yokoso.Stop();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
@@ -41,6 +52,12 @@ public class NPCinteract : MonoBehaviour
                 StopAllCoroutines();
                 dialogueText.text = dialogue[index];
             }
+        }
+        if (index >= 4)
+        {
+            Yokoso.Play();
+            Receptionniste.sprite = AizenLeGoat;
+            NPCRecep.transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 
