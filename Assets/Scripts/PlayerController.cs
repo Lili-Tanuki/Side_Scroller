@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
 {
 
     public InputActionAsset inputAsset;
-    public float speed = 1;
-    public float sprintSpeed = 3;
+    public float speed = 3;
+    public float sprintSpeed = 6;
     public float jumpForce = 5f;
 
     private float _axis;
