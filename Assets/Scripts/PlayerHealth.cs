@@ -1,24 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int health;
     public int maxHealth = 3;
-    // Start is called before the first frame update
+    private PlayerRespawn respawnScript;
+
     void Start()
     {
         health = maxHealth;
+        respawnScript = GetComponent<PlayerRespawn>();
     }
 
-    public void TakeDamage (int amount)
+    public void TakeDamage(int amount)
     {
         health -= amount;
+
         if (health <= 0)
         {
-            Destroy(gameObject);
+            health = 0;
+            if (respawnScript != null)
+            {
+                respawnScript.Die();
+            }
+            else
+            {
+                Debug.LogWarning("Pas de script PlayerRespawn trouvé !");
+            }
         }
     }
 
+    public void Heal(int amount)
+    {
+        health += amount;
+        if (health > maxHealth) health = maxHealth;
+    }
 }
