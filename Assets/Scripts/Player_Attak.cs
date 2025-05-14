@@ -20,7 +20,7 @@ public class Player_Attak : MonoBehaviour
     {
         if (isAttacking) return;
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) || (Input.GetKeyDown(KeyCode.JoystickButton2)))
         {
             StartCoroutine(DoAttack(normalHitbox, normalAttackDelay));
         }

@@ -20,14 +20,25 @@ public class PlayerController : MonoBehaviour
     private int extraJump;
     public int extraJumpValue;
 
+    public bool jumpControl;
+
     void Start()
     {
         extraJump = extraJumpValue;
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void Controls()
+    {
+        jumpControl = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0));
+
+        
+    }
+
+
     void FixedUpdate()
     {
+        
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         moveInput = Input.GetAxis("Horizontal");
@@ -45,17 +56,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(isGrounded == true)
+        Controls();
+        if (isGrounded == true)
         {
             extraJump = extraJumpValue;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
+        if(jumpControl && extraJump > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && extraJump == 0 && isGrounded == true)
+        else if(jumpControl && extraJump == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }
