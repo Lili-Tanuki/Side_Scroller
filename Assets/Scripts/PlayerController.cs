@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    Animator animator;
+
     private bool facingRight = true;
     
     private bool isGrounded;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         extraJump = extraJumpValue;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     public void Controls()
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
         else if(jumpControl && extraJump == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
+
         }
     }
 
