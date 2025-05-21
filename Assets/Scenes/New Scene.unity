@@ -3510,6 +3510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 15
+  animator: {fileID: 1824392473}
   groundCheck: {fileID: 1206614722}
   checkRadius: 0.5
   whatIsGround:

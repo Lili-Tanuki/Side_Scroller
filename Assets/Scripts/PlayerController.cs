@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    Animator animator;
+    public Animator animator;
 
     private bool facingRight = true;
     
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public int extraJumpValue;
 
     public bool jumpControl;
+ 
 
     void Start()
     {
@@ -47,13 +48,24 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2 (moveInput * speed, rb.velocity.y);
 
-        if(facingRight == false && moveInput > 0)
+        if(moveInput > 0)
         {
-            Flip();
+            //Flip();
+            Debug.Log("droite");
+            animator.SetBool("isGoingRight", true);
+            animator.SetBool("isMoving", true);
         }
-        else if(facingRight == true && moveInput < 0)
+        else if(moveInput < 0)
         {
-            Flip();
+            Debug.Log("gauche");
+            //Flip();
+            animator.SetBool("isGoingRight", false);
+            animator.SetBool("isMoving", true);
+        }
+        else if (moveInput == 0)
+        {
+            Debug.Log("stop");
+            animator.SetBool("isMoving", false);
         }
     }
 
