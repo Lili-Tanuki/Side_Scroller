@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     private float moveInput;
 
+    public ParticleSystem dustFX;
+
     private Rigidbody2D rb;
 
     public Animator animator;
@@ -75,16 +77,19 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true)
         {
             extraJump = extraJumpValue;
+        
         }
 
         if(jumpControl && extraJump > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
+            dustFX.Play();
         }
         else if(jumpControl && extraJump == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
+            dustFX.Play();
 
         }
     }
